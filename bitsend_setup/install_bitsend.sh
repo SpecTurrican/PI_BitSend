@@ -302,6 +302,7 @@ configure_coin_conf () {
 	server=1
 	listen=1
 	daemon=1
+	promode=1
 	maxconnections=64
 	logtimestamps=1
 	txindex=1

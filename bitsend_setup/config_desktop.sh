@@ -10,8 +10,9 @@ HOME="/home/${COIN}/"
 COIN_HOME="${HOME}.${COIN}/"
 INSTALL_DIR="/root/PI_${COIN_NAME}/"
 COIN_MEDIA="${HOME}MEDIA/"
-COIN_WALLPAPER="${COIN}_wallpaper.jpg"
-COIN_ICON="${COIN}_icon.png"
+GRAPHIX_FORMAT="png"
+COIN_WALLPAPER="${COIN}_wallpaper.${GRAPHIX_FORMAT}"
+COIN_ICON="${COIN}_icon.${GRAPHIX_FORMAT}"
 
 # Install Script
 SCRIPT_DIR="${INSTALL_DIR}${COIN}_setup/"
@@ -27,6 +28,14 @@ HOME_USER_COMMAND="sudo -u ${COIN}"
 # Application
 APPS="gedit ristretto"
 
+# Desktopcolor
+DESKTOP_BG="#c238c238c238"
+DESKTOP_SHADOW="#c238c238c238"
+DESKTOP_FG="#0f0f7676cccc"
+BG_COLOR="#5f5fb7b7ffff"
+FG_COLOR="#f0f0f0f0f0f0"
+BAR_BG_COLOR="#5f5fb7b7ffff"
+BAR_FG_COLOR="#000000000000"
 
 app_install () {
 
@@ -80,9 +89,9 @@ config_desktop () {
 	[ ! -d "${HOME}.config/pcmanfm/LXDE-pi" ] && $HOME_USER_COMMAND /bin/mkdir -p ${HOME}.config/pcmanfm/LXDE-pi
 	$HOME_USER_COMMAND echo "
 		[*]
-		desktop_bg=#000000000000
-		desktop_shadow=#000000000000
-		desktop_fg=#d2d23232d2d2
+		desktop_bg=${DESKTOP_BG}
+		desktop_shadow=${DESKTOP_SHADOW}
+		desktop_fg=${DESKTOP_FG}
 		desktop_font=Monospace 12
 		wallpaper=${COIN_MEDIA}${COIN_WALLPAPER}
 		wallpaper_mode=fit
@@ -96,7 +105,7 @@ config_desktop () {
 	[ ! -d "${HOME}.config/lxsession/LXDE-pi" ] && $HOME_USER_COMMAND /bin/mkdir -p ${HOME}.config/lxsession/LXDE-pi
 	$HOME_USER_COMMAND echo "
 		[GTK]
-		sGtk/ColorScheme=selected_bg_color:#d2d23232d2d2\nselected_fg_color:#f0f0f0f0f0f0\nbar_bg_color:#d2d23232d2d2\nbar_fg_color:#000000000000\n
+		sGtk/ColorScheme=selected_bg_color:${BG_COLOR}\nselected_fg_color:${FG_COLOR}\nbar_bg_color:${BAR_BG_COLOR}\nbar_fg_color:${BAR_FG_COLOR}\n
 		sGtk/FontName=Monospace 12
 		iGtk/ToolbarIconSize=3
 		sGtk/IconSizes=gtk-large-toolbar=24,24
