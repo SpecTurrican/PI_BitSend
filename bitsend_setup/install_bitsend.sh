@@ -271,15 +271,21 @@ make_coin () {
 
 	cd $COIN_INSTALL
 	./autogen.sh
-	./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
 	#
 	# Set for RPI4 4GB Version 
 	if [ "$RPI_RAM" -gt "3072" ]; then
+		./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
 		make -j3 && make install
-	else
 	#
 	# Set for RPI4 2GB Version
+	if [ "$RPI_RAM" -gt "1024" ]; then
+		./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
 		make -j2 && make install
+	else
+	#
+	# Set for RPI2/3 1GB Version
+		./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
+		make && make install
 	fi
 
 
