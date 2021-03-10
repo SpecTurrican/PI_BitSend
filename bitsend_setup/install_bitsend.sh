@@ -281,6 +281,7 @@ make_coin () {
 	if [ "$RPI_RAM" -gt "3072000" ]; then
 		./configure ${COMPILING_OPTIONS}
 		make -j3 && make install
+	fi
 	#
 	# Set for RPI4 2GB Version
 	if [ "$RPI_RAM" -gt "1024000" ]; then
