@@ -47,6 +47,11 @@ LOG_DIR="${INSTALL_DIR}logfiles/"
 LOG_FILE="make.log"
 LOG_FILE_NEXT="config_desktop.log"
 
+# Compiling options
+COMPILING_OPTIONS='LDFLAGS="-L'${BDB_PREFIX}'/lib/" CPPFLAGS="-I'${BDB_PREFIX}'/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc'
+RPI_LOW_RAM='CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"'
+
+
 # System Settings
 checkForRaspbian=$(cat /proc/cpuinfo | grep 'Revision')
 CPU_CORE=$(cat /proc/cpuinfo | grep processor | wc -l)
@@ -93,10 +98,10 @@ manage_swap () {
 	# On a Raspberry Pi, the default swap is 100MB. This is a little restrictive, so we are
 	# expanding it to a full 2GB of swap. or disable when RPI4 4GB Version
 
-	if [ "$RPI_RAM" -lt "3072" ]; then
+	if [ "$RPI_RAM" -lt "3072000" ]; then
 	sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
 	fi
-	if [ "$RPI_RAM" -gt "3072" ]; then
+	if [ "$RPI_RAM" -gt "3072000" ]; then
 	swap_off
 	fi
 
@@ -273,18 +278,18 @@ make_coin () {
 	./autogen.sh
 	#
 	# Set for RPI4 4GB Version 
-	if [ "$RPI_RAM" -gt "3072" ]; then
-		./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
+	if [ "$RPI_RAM" -gt "3072000" ]; then
+		./configure ${COMPILING_OPTIONS}
 		make -j3 && make install
 	#
 	# Set for RPI4 2GB Version
-	if [ "$RPI_RAM" -gt "1024" ]; then
-		./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
+	if [ "$RPI_RAM" -gt "1024000" ]; then
+		./configure ${COMPILING_OPTIONS}
 		make -j2 && make install
 	else
 	#
 	# Set for RPI2/3 1GB Version
-		./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc
+		./configure ${COMPILING_OPTIONS} ${RPI_LOW_RAM}
 		make && make install
 	fi
 
