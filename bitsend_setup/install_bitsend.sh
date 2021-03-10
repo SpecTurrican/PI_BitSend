@@ -48,7 +48,7 @@ LOG_FILE="make.log"
 LOG_FILE_NEXT="config_desktop.log"
 
 # Compiling options
-COMPILING_OPTIONS='LDFLAGS="-L'${BDB_PREFIX}'/lib/" CPPFLAGS="-I'${BDB_PREFIX}'/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc'
+COMPILING_OPTIONS='LDFLAGS="-L'"${BDB_PREFIX}"'/lib/" CPPFLAGS="-I'"${BDB_PREFIX}"'/include/" --disable-tests --disable-gui-tests --disable-bench --without-miniupnpc'
 RPI_LOW_RAM='CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"'
 
 
@@ -279,18 +279,18 @@ make_coin () {
 	#
 	# Set for RPI4 4GB Version 
 	if [ "$RPI_RAM" -gt "3072000" ]; then
-		./configure ${COMPILING_OPTIONS}
+		./configure $COMPILING_OPTIONS
 		make -j3 && make install
 	fi
 	#
 	# Set for RPI4 2GB Version
 	if [ "$RPI_RAM" -gt "1024000" ]; then
-		./configure ${COMPILING_OPTIONS}
+		./configure $COMPILING_OPTIONS
 		make -j2 && make install
 	else
 	#
 	# Set for RPI2/3 1GB Version
-		./configure ${COMPILING_OPTIONS} ${RPI_LOW_RAM}
+		./configure $COMPILING_OPTIONS $RPI_LOW_RAM
 		make && make install
 	fi
 
