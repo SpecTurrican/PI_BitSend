@@ -83,7 +83,7 @@ addnode=add a node from https://chainz.cryptoid.info/bsd/api.dws?q=nodes list
 [Homepage](https://bitsend.cc/) | [Source GitHub](https://github.com/LIMXTEC/BitSend) | [Blockchainexplorer](https://chainz.cryptoid.info/bsd/) | [Telegram](https://t.me/bitsend_cc) | [bitcointalk.org](https://bitcointalk.org/index.php?topic=1370307.0)
 
 ## Screenshoot
-![ScreenShot](https://raw.githubusercontent.com/SpecTurrican/PI_BitSend/master/bitsend_setup/Screenshot.png?raw=true)
+![ScreenShot](https://raw.githubusercontent.com/SpecTurrican/PI_BitSend/master/bitsend_setup/Screenshoot.png?raw=true)
 
 ## Have fun and thanks for your support :-)
 BSD donate to :
