@@ -573,6 +573,10 @@ finish () {
 	sed -i 's/#hdmi_group=1/hdmi_group=2/' /boot/config.txt
 	sed -i 's/#hdmi_mode=1/hdmi_mode=82/' /boot/config.txt
 
+	#
+	# disable Screensaver
+	echo "consoleblank=0" >> /boot/config.txt
+
 	# Passwordchange next login (only console)
 	#chage -d 0 ${COIN}
 
