@@ -16,7 +16,7 @@ The installation goes into the background. You can follow the installation with 
 ```
 sudo tail -f /root/PI_BitSend/logfiles/start.log  # 1. Phase "Prepar the system"
 sudo tail -f /root/PI_BitSend/logfiles/make.log   # 2. Phase "Compiling"
-sudo tail -f /root/PI_BitSend/logfiles/config_desktop.log   # 3. Phase "Configuration of the Bitcore user interface"
+sudo tail -f /root/PI_BitSend/logfiles/config_desktop.log   # 3. Phase "Configuration of the BitSend user interface"
 ```
 The installation takes about 3-6 hours.
 The Raspberry Pi is restarted 3 times during the installation.
