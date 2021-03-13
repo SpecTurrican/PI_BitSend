@@ -312,7 +312,7 @@ configure_coin_conf () {
 	promode=1
 	maxconnections=64
 	logtimestamps=1
-	txindex=1
+	txindex=0
 	externalip=${COIN_EXTERNALIP}:${COIN_PORT}
 	masternodeaddr=127.0.0.1:${COIN_PORT}
 	masternode=0
