@@ -254,7 +254,7 @@ make_db () {
 	# make Berkeley DB
 
 	cd ${ROOT}/db-${DB_VERSION}.NC/build_unix/
-	../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BDB_PREFIX}
+	../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BDB_PREFIX} --build=aarch64-unknown-linux-gnu
 	if [ "$CPU_CORE" = "4" ]; then
 		make -j3 && make install
 	else
