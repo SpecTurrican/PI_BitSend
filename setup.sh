@@ -9,7 +9,7 @@ else
 COIN="BitSend"
 SETUP=$(echo ${COIN} | tr '[:upper:]' '[:lower:]')
 OS=$(cat /etc/os-release | grep ID=raspbian)
-OS_Version=$(cat /etc/debian_version | grep 10)
+OS_Version=$(cat /etc/debian_version | grep 1)
 GIT_URL="https://github.com/SpecTurrican/PI_${COIN}"
 INSTALL_DIR="/root/PI_${COIN}/"
 INSTALL_FILE="${INSTALL_DIR}${SETUP}_setup/install_${SETUP}.sh"
@@ -33,7 +33,7 @@ apt-get -y update && apt-get -y install git
 
 		else
 
-			echo "This script running only below raspian buster... sorry !!!"
+			echo "This script running only below raspian buster or higher ... sorry !!!"
 			echo " "
 			echo "Visit https://www.raspberrypi.org/downloads/raspbian/ "
 
@@ -41,7 +41,7 @@ apt-get -y update && apt-get -y install git
 
 	else
 
-		echo "This script running only below raspian buster... sorry !!!"
+		echo "This script running only below raspian buster or higher ... sorry !!!"
 		echo " "
 		echo "Visit https://www.raspberrypi.org/downloads/raspbian/ "
 
