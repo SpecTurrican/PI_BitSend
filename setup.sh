@@ -8,7 +8,7 @@ else
 
 COIN="BitSend"
 SETUP=$(echo ${COIN} | tr '[:upper:]' '[:lower:]')
-OS=$(cat /etc/os-release | grep ID=raspbian)
+OS=$(cat /etc/os-release | grep 'ID=raspbian\|ID=debian')
 OS_Version=$(cat /etc/debian_version | grep 1)
 GIT_URL="https://github.com/SpecTurrican/PI_${COIN}"
 INSTALL_DIR="/root/PI_${COIN}/"
