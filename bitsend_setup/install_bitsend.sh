@@ -8,7 +8,7 @@ COIN_PORT="8886"
 COIN_RPCPORT="8885"
 COIN_DOWNLOAD="https://github.com/LIMXTEC/${COIN_NAME}"
 COIN_VERSION="$(curl -s ${COIN_DOWNLOAD}/releases/latest | cut -d'"' -f2 | cut -d'/' -f8)"
-COIN_BLOCKCHAIN_VERSION="bootstrap"
+COIN_BLOCKCHAIN_VERSION="Bootstap"
 #COIN_BLOCKCHAIN="https://github.com/LIMXTEC/${COIN_NAME}/releases/download/${COIN_VERSION}/${COIN_BLOCKCHAIN_VERSION}.zip"
 COIN_BLOCKCHAIN="https://github.com/LIMXTEC/BitSend/releases/download/0.17.9.2/Bootstap.zip"
 COIND="/usr/local/bin/${COIN}d"
@@ -31,7 +31,7 @@ DB_FILE="db-${DB_VERSION}.NC.tar.gz"
 DB_DOWNLOAD="http://download.oracle.com/berkeley-db/${DB_FILE}"
 
 # LIBRARIES and DEV_TOOLS
-LIBRARIES="libssl1.0-dev libboost-all-dev libevent-dev libzmq3-dev libqt5gui5 libqt5core5a libqt5dbus5 libqrencode-dev libprotobuf-dev"
+LIBRARIES="libssl-dev libboost-all-dev libevent-dev libzmq3-dev libqt5gui5 libqt5core5a libqt5dbus5 libqrencode-dev libprotobuf-dev"
 DEV_TOOLS="build-essential libtool autotools-dev autoconf cmake pkg-config bsdmainutils git jq unzip fail2ban ufw python3 pkg-config autotools-dev qttools5-dev qttools5-dev-tools protobuf-compiler"
 
 # Wallet RPC user and password
