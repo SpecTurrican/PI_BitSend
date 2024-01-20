@@ -10,7 +10,7 @@ COIN_DOWNLOAD="https://github.com/LIMXTEC/${COIN_NAME}"
 COIN_VERSION="$(curl -s ${COIN_DOWNLOAD}/releases/latest | cut -d'"' -f2 | cut -d'/' -f8)"
 COIN_BLOCKCHAIN_VERSION="Bootstap"
 #COIN_BLOCKCHAIN="https://github.com/LIMXTEC/${COIN_NAME}/releases/download/${COIN_VERSION}/${COIN_BLOCKCHAIN_VERSION}.zip"
-COIN_BLOCKCHAIN="https://github.com/LIMXTEC/BitSend/releases/download/0.17.9.2/Bootstap.zip"
+COIN_BLOCKCHAIN="https://github.com/LIMXTEC/BitSend/releases/download/0.21/2022-04-13_bootstrap.zip"
 COIND="/usr/local/bin/${COIN}d"
 COIN_CLI="/usr/local/bin/${COIN}-cli"
 COIN_BLOCKEXPLORER="https://chainz.cryptoid.info/bsd/api.dws?q=getblockcount"
@@ -315,8 +315,8 @@ configure_coin_conf () {
 	logtimestamps=1
 	txindex=0
 	externalip=${COIN_EXTERNALIP}:${COIN_PORT}
-	masternodeaddr=127.0.0.1:${COIN_PORT}
-	masternode=0
+	#masternodeaddr=127.0.0.1:${COIN_PORT}
+	#masternode=0
 	#masternodeprivkey=
 
 	#############
@@ -630,7 +630,7 @@ else
 		configure_service
 		checkrunning
 		watch_synch
-		masternode_on
+		#masternode_on
 		finish
 
 	else
